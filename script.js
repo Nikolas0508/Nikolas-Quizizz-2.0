@@ -96,7 +96,6 @@
     console.log("\n📌 Se seu sistema ainda detectar tudo isso, ele é forte 💪");
 })();
 
-// --- PAINEL VISUAL FINAL (DRAG CORRIGIDO + LINK FUNCIONANDO) ---
 (function () {
     if (document.getElementById("nikolas-panel")) return;
 
@@ -104,60 +103,22 @@
     panel.id = "nikolas-panel";
 
     panel.style.position = "fixed";
-    panel.style.top = "100px";
-    panel.style.left = "100px";
+    panel.style.top = "10px";
+    panel.style.left = "10px";
     panel.style.zIndex = "999999";
     panel.style.background = "rgba(10, 15, 30, 0.9)";
-    panel.style.backdropFilter = "blur(10px)";
-    panel.style.padding = "14px";
-    panel.style.borderRadius = "14px";
-    panel.style.color = "#fff";
+    panel.style.padding = "10px 14px";
+    panel.style.borderRadius = "10px";
+    panel.style.color = "#4da6ff";
     panel.style.fontFamily = "Arial, sans-serif";
-    panel.style.width = "200px";
-    panel.style.boxShadow = "0 0 25px rgba(0,150,255,0.7)";
-    panel.style.border = "1px solid rgba(0,150,255,0.7)";
+    panel.style.fontSize = "14px";
+    panel.style.fontWeight = "bold";
+    panel.style.boxShadow = "0 0 15px rgba(0,150,255,0.7)";
+    panel.style.border = "1px solid rgba(0,150,255,0.6)";
 
-    panel.innerHTML = `
-        <div id="drag-area" style="cursor:move;">
-            <div style="font-weight:bold;font-size:16px;color:#4da6ff;">
-                Nikolas Quizizz
-            </div>
-            <div style="font-weight:bold;font-size:16px;color:#00ff88;margin-top:4px;">
-                ● ON
-            </div>
-        </div>
-
-        <a href="https://www.instagram.com/nikolas_.pereira05/" target="_blank"
-        style="display:block;margin-top:8px;font-size:13px;color:#ccc;text-decoration:none;">
-            @nikolas_.pereira05
-        </a>
-    `;
+    panel.innerText = "Nikolas Quizizz ON";
 
     document.body.appendChild(panel);
 
-    // --- DRAG CORRIGIDO ---
-    const dragArea = panel.querySelector("#drag-area");
-
-    let isDragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    dragArea.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        offsetX = e.clientX - panel.offsetLeft;
-        offsetY = e.clientY - panel.offsetTop;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-
-        panel.style.left = (e.clientX - offsetX) + "px";
-        panel.style.top = (e.clientY - offsetY) + "px";
-    });
-
-    document.addEventListener("mouseup", () => {
-        isDragging = false;
-    });
-
-    console.log("🟢 Painel final ativado");
+    console.log("🟢 Painel simples ativado");
 })();
