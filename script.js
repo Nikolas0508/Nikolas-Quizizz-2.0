@@ -95,3 +95,49 @@
 
     console.log("\n📌 Se seu sistema ainda detectar tudo isso, ele é forte 💪");
 })();
+
+// Visual
+
+// --- PAINEL VISUAL (Script ON + Instagram) ---
+(function () {
+    if (document.getElementById("nikolas-status-panel")) return;
+
+    const panel = document.createElement("div");
+    panel.id = "nikolas-status-panel";
+
+    panel.style.position = "fixed";
+    panel.style.top = "15px";
+    panel.style.right = "15px";
+    panel.style.zIndex = "999999";
+    panel.style.background = "rgba(0,0,0,0.8)";
+    panel.style.backdropFilter = "blur(6px)";
+    panel.style.color = "#fff";
+    panel.style.padding = "10px 14px";
+    panel.style.borderRadius = "10px";
+    panel.style.fontFamily = "Arial, sans-serif";
+    panel.style.fontSize = "13px";
+    panel.style.boxShadow = "0 5px 20px rgba(0,0,0,0.4)";
+    panel.style.display = "flex";
+    panel.style.alignItems = "center";
+    panel.style.gap = "8px";
+
+    const instaIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17" cy="7" r="1.2"/>
+    </svg>`;
+
+    panel.innerHTML = `
+        <span style="color:#00ff88;font-weight:bold;">● Script ON</span>
+        <a href="https://www.instagram.com/nikolas_.pereira05/" target="_blank"
+        style="display:flex;align-items:center;gap:5px;color:#fff;text-decoration:none;">
+            ${instaIcon}
+            <span>@nikolas_.pereira05</span>
+        </a>
+    `;
+
+    document.body.appendChild(panel);
+
+    console.log("🟢 Painel visual ativado");
+})();
