@@ -96,48 +96,61 @@
     console.log("\n📌 Se seu sistema ainda detectar tudo isso, ele é forte 💪");
 })();
 
-// Visual
-
-// --- PAINEL VISUAL (Script ON + Instagram) ---
+// --- PAINEL VISUAL AVANÇADO (DRAG + RGB) ---
 (function () {
-    if (document.getElementById("nikolas-status-panel")) return;
+    if (document.getElementById("nikolas-panel")) return;
 
     const panel = document.createElement("div");
-    panel.id = "nikolas-status-panel";
+    panel.id = "nikolas-panel";
 
     panel.style.position = "fixed";
-    panel.style.top = "15px";
-    panel.style.right = "15px";
+    panel.style.top = "100px";
+    panel.style.left = "100px";
     panel.style.zIndex = "999999";
-    panel.style.background = "rgba(0,0,0,0.8)";
-    panel.style.backdropFilter = "blur(6px)";
+    panel.style.background = "rgba(10, 15, 30, 0.85)";
+    panel.style.backdropFilter = "blur(10px)";
+    panel.style.padding = "14px";
+    panel.style.borderRadius = "14px";
     panel.style.color = "#fff";
-    panel.style.padding = "10px 14px";
-    panel.style.borderRadius = "10px";
     panel.style.fontFamily = "Arial, sans-serif";
-    panel.style.fontSize = "13px";
-    panel.style.boxShadow = "0 5px 20px rgba(0,0,0,0.4)";
-    panel.style.display = "flex";
-    panel.style.alignItems = "center";
-    panel.style.gap = "8px";
-
-    const instaIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-        <rect x="2" y="2" width="20" height="20" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17" cy="7" r="1.2"/>
-    </svg>`;
+    panel.style.width = "180px";
+    panel.style.cursor = "move";
+    panel.style.boxShadow = "0 0 20px rgba(0, 150, 255, 0.6)";
+    panel.style.border = "1px solid rgba(0,150,255,0.6)";
 
     panel.innerHTML = `
-        <span style="color:#00ff88;font-weight:bold;">● Script ON</span>
-        <a href="https://www.instagram.com/nikolas_.pereira05/" target="_blank"
-        style="display:flex;align-items:center;gap:5px;color:#fff;text-decoration:none;">
-            ${instaIcon}
-            <span>@nikolas_.pereira05</span>
-        </a>
+        <div style="font-weight:bold;font-size:15px;margin-bottom:6px;color:#4da6ff;">
+            Nikolas Quizizz
+        </div>
+        <div id="nikolas-status" style="margin-bottom:6px;color:#00ff88;font-weight:bold;">
+            ● ON
+        </div>
+        <div style="font-size:12px;opacity:0.8;">
+            @nikolas_.pereira05
+        </div>
     `;
 
     document.body.appendChild(panel);
 
-    console.log("🟢 Painel visual ativado");
+    // --- DRAG ---
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    panel.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - panel.offsetLeft;
+        offsetY = e.clientY - panel.offsetTop;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        panel.style.left = (e.clientX - offsetX) + "px";
+        panel.style.top = (e.clientY - offsetY) + "px";
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+    });
+
+    console.log("🟢 Painel RGB ativado");
 })();
