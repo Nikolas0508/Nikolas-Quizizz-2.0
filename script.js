@@ -116,7 +116,7 @@
     panel.style.boxShadow = "0 0 15px rgba(0,150,255,0.7)";
     panel.style.border = "1px solid rgba(0,150,255,0.6)";
 
-    panel.innerText = "Nikolas Quizizz ON";
+    panel.innerText = "Nikolas Quizizz Ligado";
 
     document.body.appendChild(panel);
 
