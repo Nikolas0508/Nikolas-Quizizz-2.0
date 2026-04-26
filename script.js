@@ -138,4 +138,33 @@
 
     console.log('%c🎉 Tudo configurado! Teste botão direito, troca de aba e ajuste de tela.', 'color: lime; font-weight: bold;');
 
+(function () {
+    if (document.getElementById("nikolas-panel")) return;
+
+    const panel = document.createElement("div");
+    panel.id = "nikolas-panel";
+
+    Object.assign(panel.style, {
+        position: "fixed",
+        top: "10px",
+        left: "10px",
+        zIndex: "2147483647",
+        background: "rgba(10, 15, 30, 0.9)",
+        color: "#4da6ff",
+        padding: "10px 14px",
+        borderRadius: "10px",
+        fontFamily: "Arial, sans-serif",
+        fontSize: "14px",
+        fontWeight: "bold",
+        boxShadow: "0 0 15px rgba(0,150,255,0.7)",
+        border: "1px solid rgba(0,150,255,0.6)"
+    });
+
+    panel.textContent = "Nikolas Quizizz";
+
+    document.body.appendChild(panel);
+
+    console.log("🟢 Painel visual ativado");
+})();
+
 })();
