@@ -180,9 +180,9 @@
             boxShadow: "0 0 15px rgba(0,150,255,0.7)",
             border: "1px solid rgba(0,150,255,0.6)"
         });
-        panel.textContent = "✅ Nikolas Quizizz - Full Protection";
+        panel.textContent = "Nikolas Quizizz";
         document.body.appendChild(panel);
     }
 
-    console.log('%c🎉 Nikolas Quizizz Full Protection carregado! (Copia, Cola, Resize, Tela Cheia, Aba)', 'color: lime; font-weight: bold;');
+    console.log('%c🎉 Nikolas Quizizz carregado! (Copia, Cola, Resize, Tela Cheia, Aba)', 'color: lime; font-weight: bold;');
 })();
