@@ -51,7 +51,7 @@
     // 3. Bloqueia detecção de saída de fullscreen
     const blockFullscreenDetection = () => {
         const originalExit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen;
-       
+
         if (originalExit) {
             document.exitFullscreen = function() {
                 console.log('%c🔄 Saída de tela cheia mascarada', 'color: yellow');
@@ -91,7 +91,6 @@
         window.addEventListener = function(type, listener, options) {
             if (type === 'resize') {
                 console.log('%c🚫 Listener de resize bloqueado/parcialmente ignorado', 'color: orange');
-                // Ainda registra, mas o handler acima filtra
             }
             return origAdd.apply(this, arguments);
         };
@@ -99,13 +98,11 @@
 
     // 5. LIBERA e protege Copia, Cola e Seleção de texto
     const enableCopyPaste = () => {
-        // Reabilita eventos
         document.oncopy = null;
         document.onpaste = null;
         document.oncut = null;
         document.onselectstart = null;
 
-        // Força permissão via CSS
         const style = document.createElement('style');
         style.textContent = `
             * {
@@ -117,7 +114,6 @@
         `;
         document.head.appendChild(style);
 
-        // Intercepta addEventListener para bloquear quem tenta desabilitar
         const originalAdd = document.addEventListener;
         document.addEventListener = function(type, listener, options) {
             if (['copy', 'paste', 'cut', 'selectstart'].includes(type)) {
@@ -127,11 +123,9 @@
             return originalAdd.apply(this, arguments);
         };
 
-        // Permite Ctrl+C, Ctrl+V, Ctrl+X globalmente
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && ['c','v','x'].includes(e.key.toLowerCase())) {
                 console.log(`%c📋 Atalho ${e.key.toUpperCase()} liberado`, 'color: lime');
-                // Não impede a propagação
             }
         }, true);
     };
@@ -161,28 +155,7 @@
         window.dispatchEvent(new Event('focus'));
     }, 1500);
 
-    // Painel visual
-    if (!document.getElementById("nikolas-panel")) {
-        const panel = document.createElement("div");
-        panel.id = "nikolas-panel";
-        Object.assign(panel.style, {
-            position: "fixed",
-            top: "10px",
-            left: "10px",
-            zIndex: "2147483647",
-            background: "rgba(10, 15, 30, 0.95)",
-            color: "#4da6ff",
-            padding: "12px 16px",
-            borderRadius: "10px",
-            fontFamily: "Arial, sans-serif",
-            fontSize: "14px",
-            fontWeight: "bold",
-            boxShadow: "0 0 15px rgba(0,150,255,0.7)",
-            border: "1px solid rgba(0,150,255,0.6)"
-        });
-        panel.textContent = "Nikolas Quizizz";
-        document.body.appendChild(panel);
-    }
+    // Nenhum painel visual é criado.
 
     console.log('%c🎉 Nikolas Quizizz carregado! (Copia, Cola, Resize, Tela Cheia, Aba)', 'color: lime; font-weight: bold;');
 })();
